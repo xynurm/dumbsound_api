@@ -9,6 +9,7 @@ Hello this my final task project. Dumbsound is web app to listening some your fa
 - Subscribe with midtrans payment.
 
 ## Authors
+Ridha Aulia
 
 - <a href ="https://www.linkedin.com/in/ridhaxyn/">LinkedIn</a>
 
