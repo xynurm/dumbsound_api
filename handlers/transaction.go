@@ -161,14 +161,12 @@ func (h *handlerTransaction) Notification(w http.ResponseWriter, r *http.Request
 	transactionStatus := notificationPayload["transaction_status"].(string)
 	fraudStatus := notificationPayload["fraud_status"].(string)
 	orderID := notificationPayload["order_id"].(string)
-
 	if transactionStatus == "capture" {
 		if fraudStatus == "challenge" {
 			h.TransactionRepository.UpdateTransactionStatus("pending", orderID)
 
 		} else if fraudStatus == "accept" {
 			h.TransactionRepository.UpdateTransactionStatus("success", orderID)
-
 		}
 
 	} else if transactionStatus == "settlement" {
@@ -182,7 +180,6 @@ func (h *handlerTransaction) Notification(w http.ResponseWriter, r *http.Request
 
 	} else if transactionStatus == "pending" {
 		h.TransactionRepository.UpdateTransactionStatus("pending", orderID)
-
 	}
 	w.WriteHeader(http.StatusOK)
 }
