@@ -53,6 +53,22 @@ func (h *handlerTransaction) FindTransaction(w http.ResponseWriter, r *http.Requ
 	json.NewEncoder(w).Encode(response)
 }
 
+// func (h *handlerTransaction) GetTransactionByUser(w http.ResponseWriter, r *http.Request) {
+// 	w.Header().Set("Content-Type", "application/json")
+
+// 	userInfo := r.Context().Value("userInfo").(jwt.MapClaims)
+// 	userId := int(userInfo["id"].(float64))
+
+// 	transaction, err := h.TransactionRepository.GetUserTransaction(userId)
+// 	if err != nil {
+// 		w.WriteHeader(http.StatusBadRequest)
+// 		response := dto.ErrorResult{Code: http.StatusBadRequest, Message: err.Error()}
+// 		json.NewEncoder(w).Encode(response)
+// 		return
+// 	}
+
+// }
+
 func (h *handlerTransaction) CreateTransaction(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Contetnt-Type", "application/json")
 

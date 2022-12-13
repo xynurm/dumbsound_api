@@ -10,6 +10,7 @@ type TransactionRepository interface {
 	FindTransaction() ([]models.Transaction, error)
 	CreateTransaction(transaction models.Transaction) (models.Transaction, error)
 	GetTransactionID(ID int) (models.Transaction, error)
+	GetUserTransaction(userID int) (models.Transaction, error)
 	UpdateTransactionStatus(status string, ID string) error
 }
 
@@ -33,6 +34,13 @@ func (r *repository) CreateTransaction(transaction models.Transaction) (models.T
 func (r *repository) GetTransactionID(ID int) (models.Transaction, error) {
 	var transaction models.Transaction
 	err := r.db.Preload("User").Find(&transaction, ID).Error
+
+	return transaction, err
+}
+
+func (r *repository) GetUserTransaction(userID int) (models.Transaction, error) {
+	var transaction models.Transaction
+	err := r.db.Preload("User").Find(&transaction, "user_id = ? and status =?", userID, "pending").Error
 
 	return transaction, err
 }
