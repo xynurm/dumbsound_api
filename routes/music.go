@@ -14,5 +14,6 @@ func MusicRoutes(r *mux.Router) {
 	h := handlers.HandlerMusic(musicRepository)
 
 	r.HandleFunc("/music", middleware.Auth(middleware.UploadThumbnail(middleware.UploadMusic(h.CreateMusic)))).Methods("POST")
-	r.HandleFunc("/musics", h.FindMusics).Methods("GET")
+	r.HandleFunc("/musics", middleware.Auth(h.FindMusics)).Methods("GET")
+	r.HandleFunc("/gmusics", h.GetAllMusics).Methods("GET")
 }

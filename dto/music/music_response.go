@@ -7,6 +7,13 @@ type MusicResponse struct {
 	Title     string       `json:"title"`
 	Year      string       `json:"year"`
 	Thumbnail string       `json:"thumbnail"`
+	Artis     models.Artis `json:"artis"`
+}
+type MusicSubscribeResponse struct {
+	ID        int          `json:"id"`
+	Title     string       `json:"title"`
+	Year      string       `json:"year"`
+	Thumbnail string       `json:"thumbnail"`
 	Attache   string       `json:"attache"`
 	Artis     models.Artis `json:"artis"`
 }
